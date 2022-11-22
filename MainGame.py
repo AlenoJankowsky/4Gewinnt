@@ -25,17 +25,29 @@ class MainGame:
                 print("Please enter X or O for your symbol.")
                 continue
 
-    def turn(self, player_name) -> None:
-        self.get_row_input(player_name)
-        
+    def turn(self, player_name, player_symbol, board) -> None:
+        while True:
+            try:
+                column_number = self.get_column_input(player_name)
+                if board.is_valid_turn(column_number):
+                    break
+                else:
+                    raise ValueError
 
-    def get_row_input(self, player_name) -> int:
+            except ValueError:
+                print(f"You can't put a coin in column {column_number}")
+                continue
+        
+        board.add_coin_to_board(column_number, player_symbol)
+
+
+    def get_column_input(self, player_name) -> int:
         return int(input(f"{player_name}: Select a row to put your coin: "))
         
     def round(self, board, current_amount_of_rounds) -> None:
-        self.turn(self.player_one.name)
+        self.turn(self.player_one.name, self.player_one.symbol, board)
         board.show_board(board.board, current_amount_of_rounds)
-        self.turn(self.player_two.name)
+        self.turn(self.player_two.name, self.player_two.symbol, board)
         board.show_board(board.board, current_amount_of_rounds)
 
     
