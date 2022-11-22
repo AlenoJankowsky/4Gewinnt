@@ -20,3 +20,4 @@ class Board:
                 print(cell)
 
         print("\n")
+        
