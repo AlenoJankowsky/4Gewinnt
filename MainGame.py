@@ -1,3 +1,45 @@
+from Player import Player
+
 class MainGame:
     def __init__(self):
-        pass
+        self.player_one = Player(self.get_user_name(1), self.get_user_symbol(1))
+        self.player_two = Player(self.get_user_name(2), self.get_user_symbol(2))
+
+    def get_user_name(self, player_count) -> str:
+        new_player_name = input(f"Player {player_count}: Please enter your name: ")
+
+        return new_player_name
+
+    def get_user_symbol(self, player_count) -> str:
+        while True:
+            try:
+                new_player_symbol = input(
+                    f"Player {player_count}: Please enter your wanted symbol: "
+                )
+                if new_player_symbol == "X" or new_player_symbol == "O":
+                    return new_player_symbol
+                else:
+                    raise ValueError
+
+            except ValueError:
+                print("Please enter X or O for your symbol.")
+                continue
+
+    def turn(self, player_name) -> None:
+        self.get_row_input(player_name)
+        
+
+    def get_row_input(self, player_name) -> int:
+        return int(input(f"{player_name}: Select a row to put your coin: "))
+        
+    def round(self, board, current_amount_of_rounds) -> None:
+        self.turn(self.player_one.name)
+        board.show_board(board.board, current_amount_of_rounds)
+        self.turn(self.player_two.name)
+        board.show_board(board.board, current_amount_of_rounds)
+
+    
+    def play(self, board, current_amount_of_rounds) -> None:
+        while True:
+            self.round(board, current_amount_of_rounds)
+            current_amount_of_rounds += 1
