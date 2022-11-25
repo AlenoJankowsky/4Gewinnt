@@ -14,7 +14,7 @@ class MainGame:
         while True:
             try:
                 new_player_symbol = input(
-                    f"Player {player_count}: Please enter your wanted symbol: "
+                    f"Player {player_count}: Please enter your wanted symbol, you can chose between O and X: "
                 )
                 if new_player_symbol == "X" or new_player_symbol == "O":
                     return new_player_symbol
