@@ -23,7 +23,6 @@ class MainGame:
 
             except ValueError:
                 print("Please enter X or O for your symbol.")
-                continue
 
     def turn(self, player_name, player_symbol, board) -> None:
         while True:
