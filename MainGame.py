@@ -46,18 +46,12 @@ class MainGame:
         
     def round(self, board, current_amount_of_rounds, status_validator) -> None:
         self.turn(self.player_one.name, self.player_one.symbol, board)
-
+        print(status_validator.has_sequence(board, self.player_one.symbol))
         board.show_board(current_amount_of_rounds)
-        self.turn(self.player_two.name, self.player_two.symbol, board)
-        board.show_board(current_amount_of_rounds)
-
 
         self.turn(self.player_two.name, self.player_two.symbol, board)
         print(status_validator.has_sequence(board, self.player_two.symbol))
-
-        board.show_board(board, current_amount_of_rounds)
-        
-
+        board.show_board(current_amount_of_rounds)
 
     def play(self, board, current_amount_of_rounds, status_validator) -> None:
         while True:
