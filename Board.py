@@ -1,6 +1,6 @@
 class Board:
     def __init__(self):
-        self.board = Board.create_board(self)
+        self.board = self.create_board()
 
     def create_board(self) -> list[list[str]]:
         new_board = [['|_|','_|','_|','_|','_|','_|'],
