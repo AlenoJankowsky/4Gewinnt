@@ -10,7 +10,7 @@ class Board:
                      ['|_|','_|','_|','_|','_|','_|'],
                      ['|_|','_|','_|','_|','_|','_|'],
                      ['|1|''2|''3|''4|''5|''6|']]
-        
+
         return new_board
 
     def show_board(self, board, current_amount_of_rounds) -> None:
@@ -22,9 +22,9 @@ class Board:
                 if cell_counter == 5:
                     print(cell)
                     continue
-                else: 
+                else:
                     print(cell, end="")
-                    
+
                 cell_counter += 1
 
         print("\n")
