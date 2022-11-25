@@ -19,6 +19,5 @@ class StatusValidator:
                 else: 
                     sequence_counter = 0
                     continue
-                
 
         return False    

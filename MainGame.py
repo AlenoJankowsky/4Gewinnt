@@ -39,8 +39,6 @@ class MainGame:
 
         board.add_coin_to_board(column_number, player_symbol)
 
-        return
-
     def get_column_input(self, player_name) -> int:
         return int(input(f"{player_name}: Select a row to put your coin: ")) - 1
         
