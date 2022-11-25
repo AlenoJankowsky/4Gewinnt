@@ -41,13 +41,13 @@ class Board:
             return True
 
     def add_coin_to_board(self, column_number, player_symbol) -> None:
-        board_iterator = -2
+        board_bottom_index = -2
         next_valid_cell_is_found = False
-        while not next_valid_cell_is_found or board_iterator == -6:
-            if '_' in self.board[board_iterator][column_number]:
-                self.board[board_iterator][column_number] = self.board[board_iterator][column_number].replace('_', player_symbol)
+        while not next_valid_cell_is_found or board_bottom_index == -6:
+            if '_' in self.board[board_bottom_index][column_number]:
+                self.board[board_bottom_index][column_number] = self.board[board_bottom_index][column_number].replace('_', player_symbol)
                 next_valid_cell_is_found = True
 
                 return
             else:
-                board_iterator -= 1
+                board_bottom_index -= 1
