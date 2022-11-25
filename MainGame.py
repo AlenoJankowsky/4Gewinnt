@@ -35,7 +35,7 @@ class MainGame:
                     raise ValueError
 
             except ValueError:
-                print(f"You can't put a coin in column {column_number}")
+                print(f"You can't put a coin in column {column_number + 1}")
                 continue
 
         board.add_coin_to_board(board, column_number, player_symbol)
@@ -45,13 +45,20 @@ class MainGame:
     def get_column_input(self, player_name) -> int:
         return int(input(f"{player_name}: Select a row to put your coin: ")) - 1
         
-    def round(self, board, current_amount_of_rounds) -> None:
+    def round(self, board, current_amount_of_rounds, status_validator) -> None:
         self.turn(self.player_one.name, self.player_one.symbol, board)
-        board.show_board(board, current_amount_of_rounds)
-        self.turn(self.player_two.name, self.player_two.symbol, board)
+        print(status_validator.has_sequence(board, self.player_one.symbol))
+
         board.show_board(board, current_amount_of_rounds)
 
-    def play(self, board, current_amount_of_rounds) -> None:
+        self.turn(self.player_two.name, self.player_two.symbol, board)
+        print(status_validator.has_sequence(board, self.player_two.symbol))
+
+        board.show_board(board, current_amount_of_rounds)
+        
+
+
+    def play(self, board, current_amount_of_rounds, status_validator) -> None:
         while True:
-            self.round(board, current_amount_of_rounds)
+            self.round(board, current_amount_of_rounds, status_validator), status_validator
             current_amount_of_rounds += 1
