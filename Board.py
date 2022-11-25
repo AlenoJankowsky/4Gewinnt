@@ -1,4 +1,4 @@
-class Board:  
+class Board:
     def __init__(self):
         self.board = Board.create_board(self)
 
