@@ -50,4 +50,3 @@ class Board:
                 return
             else:
                 board_iterator -= 1
-                continue
