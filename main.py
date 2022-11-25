@@ -8,6 +8,5 @@ def main() -> None:
     board.show_board(board, current_amount_of_rounds)
     current_amount_of_rounds += 1
     game.play(board, current_amount_of_rounds)
-    
 if __name__ == "__main__":
     main()
