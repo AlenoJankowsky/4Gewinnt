@@ -30,9 +30,11 @@ class Board:
         print("\n")
 
     def is_valid_turn(self, column_number) -> bool:
-        if column_number > 5 or column_number < 0:
+        user_input_is_not_in_range = column_number > 5 or column_number < 0
+        first_cell_in_column_is_free = '_' in self.board[0][column_number]
+        if user_input_is_not_in_range:
             return False
-        elif not '_' in self.board[0][column_number]:
+        elif not first_cell_in_column_is_free:
             return False
         else:
             return True
