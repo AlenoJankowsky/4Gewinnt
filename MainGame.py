@@ -14,7 +14,7 @@ class MainGame:
         while True:
             try:
                 new_player_symbol = input(
-                    f"Player {player_count}: Please enter your wanted symbol: "
+                    f"Player {player_count}: Please enter your wanted symbol, you can chose between O and X: "
                 )
                 if new_player_symbol == "X" or new_player_symbol == "O":
                     return new_player_symbol
@@ -23,13 +23,12 @@ class MainGame:
 
             except ValueError:
                 print("Please enter X or O for your symbol.")
-                continue
 
     def turn(self, player_name, player_symbol, board) -> None:
         while True:
             try:
                 column_number = self.get_column_input(player_name)
-                if board.is_valid_turn(board, column_number):
+                if board.is_valid_turn(column_number):
                     break
                 else:
                     raise ValueError
@@ -38,7 +37,7 @@ class MainGame:
                 print(f"You can't put a coin in column {column_number + 1}")
                 continue
 
-        board.add_coin_to_board(board, column_number, player_symbol)
+        board.add_coin_to_board(column_number, player_symbol)
 
         return
 
@@ -47,9 +46,11 @@ class MainGame:
         
     def round(self, board, current_amount_of_rounds, status_validator) -> None:
         self.turn(self.player_one.name, self.player_one.symbol, board)
-        print(status_validator.has_sequence(board, self.player_one.symbol))
 
-        board.show_board(board, current_amount_of_rounds)
+        board.show_board(current_amount_of_rounds)
+        self.turn(self.player_two.name, self.player_two.symbol, board)
+        board.show_board(current_amount_of_rounds)
+
 
         self.turn(self.player_two.name, self.player_two.symbol, board)
         print(status_validator.has_sequence(board, self.player_two.symbol))
