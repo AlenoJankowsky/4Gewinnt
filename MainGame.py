@@ -42,16 +42,28 @@ class MainGame:
     def get_column_input(self, player_name) -> int:
         return int(input(f"{player_name}: Select a row to put your coin: ")) - 1
         
-    def round(self, board, current_amount_of_rounds, status_validator) -> None:
+    def round(self, board, current_amount_of_rounds, status_validator, one_player_has_won) -> bool:
         self.turn(self.player_one.name, self.player_one.symbol, board)
-        print(status_validator.has_sequence(board, self.player_one.symbol))
         board.show_board(current_amount_of_rounds)
+        if status_validator.is_win(board, self.player_one.symbol):
+            one_player_has_won = True
+            print(f"Congratulations, {self.player_one.name}, you have won the game! Here is a cookie for you.")
 
+            return one_player_has_won
+        
         self.turn(self.player_two.name, self.player_two.symbol, board)
-        print(status_validator.has_sequence(board, self.player_two.symbol))
         board.show_board(current_amount_of_rounds)
+        if status_validator.is_win(board, self.player_two.symbol):
+            one_player_has_won = True
+            print(f"Congratulations, {self.player_two.name}, you have won the game! Here is a cookie for you.")
+
+            return one_player_has_won
+        
 
     def play(self, board, current_amount_of_rounds, status_validator) -> None:
-        while True:
-            self.round(board, current_amount_of_rounds, status_validator), status_validator
+        one_player_has_won = False
+        while not one_player_has_won:
+            one_player_has_won = self.round(board, current_amount_of_rounds, status_validator, one_player_has_won)
+
             current_amount_of_rounds += 1
+        
