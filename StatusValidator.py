@@ -63,3 +63,10 @@ class StatusValidator:
                 else:
                     sequence_counter = 0
                     cell_index_in_row = old_cell_index_in_row
+
+    def board_is_full(self, board) -> bool:
+        for cell in board.board[0]:
+            if '_' in cell:
+                return False
+                
+        return True

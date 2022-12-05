@@ -45,14 +45,26 @@ class MainGame:
     def round(self, board, current_amount_of_rounds, status_validator, one_player_has_won) -> bool:
         self.turn(self.player_one.name, self.player_one.symbol, board)
         board.show_board(current_amount_of_rounds)
+
+        if status_validator.board_is_full(board):
+            print("Unentschieden.")
+
+            return True
+
         if status_validator.is_win(board, self.player_one.symbol):
             one_player_has_won = True
             print(f"Congratulations, {self.player_one.name}, you have won the game! Here is a cookie for you.")
 
             return one_player_has_won
-        
+
         self.turn(self.player_two.name, self.player_two.symbol, board)
         board.show_board(current_amount_of_rounds)
+
+        if status_validator.board_is_full(board):
+            print("Unentschieden.")
+
+            return True
+
         if status_validator.is_win(board, self.player_two.symbol):
             one_player_has_won = True
             print(f"Congratulations, {self.player_two.name}, you have won the game! Here is a cookie for you.")
