@@ -78,4 +78,3 @@ class MainGame:
             one_player_has_won = self.round(board, current_amount_of_rounds, status_validator, one_player_has_won)
 
             current_amount_of_rounds += 1
-        
