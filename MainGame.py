@@ -2,27 +2,13 @@ from Player import Player
 
 class MainGame:
     def __init__(self):
-        self.player_one = Player(self.get_user_name(1), self.get_user_symbol(1))
-        self.player_two = Player(self.get_user_name(2), self.get_user_symbol(2))
+        self.player_one = Player(self.get_user_name(1), 'X')
+        self.player_two = Player(self.get_user_name(2), 'O')
 
     def get_user_name(self, player_count) -> str:
         new_player_name = input(f"Player {player_count}: Please enter your name: ")
 
         return new_player_name
-
-    def get_user_symbol(self, player_count) -> str:
-        while True:
-            try:
-                new_player_symbol = input(
-                    f"Player {player_count}: Please enter your wanted symbol, you can chose between O and X: "
-                )
-                if new_player_symbol == "X" or new_player_symbol == "O":
-                    return new_player_symbol
-                else:
-                    raise ValueError
-
-            except ValueError:
-                print("Please enter X or O for your symbol.")
 
     def turn(self, player_name, player_symbol, board) -> None:
         while True:

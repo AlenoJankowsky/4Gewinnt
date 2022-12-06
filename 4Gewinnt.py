@@ -13,7 +13,7 @@ def main() -> None:
         game.play(board, current_amount_of_rounds, status_validator)
         while True:
             try:
-                play_again = input("Do you want to play again? Y/N? ")
+                play_again = input("Do you want to play again? Y/N? ").upper()
                 if play_again == 'Y':
                     current_amount_of_rounds = 0
                     board = Board()
