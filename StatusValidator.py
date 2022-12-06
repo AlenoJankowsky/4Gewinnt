@@ -1,8 +1,6 @@
 class StatusValidator:
-    def is_win(self, board, player_symbol) -> bool:
-        return self.is_horizontal_win(board, player_symbol) or self.is_vertical_win(board, player_symbol) or self.is_diagonal_win(board, player_symbol)
-
-    def is_horizontal_win(self, board, player_symbol) -> bool:
+    @staticmethod
+    def is_horizontal_win(board, player_symbol) -> bool:
         for row in board.board:
             sequence_counter = 0
             for cell in row:
@@ -16,7 +14,8 @@ class StatusValidator:
 
         return False
 
-    def is_vertical_win(self, board, player_symbol) -> bool:
+    @staticmethod
+    def is_vertical_win(board, player_symbol) -> bool:
         sequence_counter = 0
         for cell_index_in_row in range(5):
             for row in board.board:
@@ -30,7 +29,8 @@ class StatusValidator:
                     
         return False
 
-    def is_diagonal_win(self, board, player_symbol) -> bool:
+    @staticmethod
+    def is_diagonal_win(board, player_symbol) -> bool:
         sequence_counter = 0
         for cell_index_in_row in range(2):
             for row in board.board:
@@ -60,10 +60,17 @@ class StatusValidator:
                 else:
                     sequence_counter = 0
                     cell_index_in_row = old_cell_index_in_row
+        
+        return False
 
-    def board_is_full(self, board) -> bool:
+    @staticmethod
+    def board_is_full(board) -> bool:
         for cell in board.board[0]:
             if '_' in cell:
                 return False
                 
         return True
+
+    @staticmethod
+    def is_win(board, player_symbol) -> bool:
+        return StatusValidator.is_horizontal_win(board, player_symbol) or StatusValidator.is_vertical_win(board, player_symbol) or StatusValidator.is_diagonal_win(board, player_symbol)
