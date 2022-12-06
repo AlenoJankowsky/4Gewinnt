@@ -21,12 +21,12 @@ class StatusValidator:
             for row in board.board:
                 if sequence_counter == 4:
                     return True
-                
+
                 if player_symbol in row[cell_index_in_row]:
                     sequence_counter += 1
                 else:
                     sequence_counter = 0
-                    
+
         return False
 
     @staticmethod
@@ -60,7 +60,7 @@ class StatusValidator:
                 else:
                     sequence_counter = 0
                     cell_index_in_row = old_cell_index_in_row
-        
+
         return False
 
     @staticmethod
