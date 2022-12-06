@@ -56,7 +56,7 @@ class MainGame:
             print(f"Congratulations, {self.player_two.name}, you have won the game! Here is a cookie for you.")
 
             return one_player_has_won
-        
+
     def play(self, board, current_amount_of_rounds, status_validator) -> None:
         one_player_has_won = False
         while not one_player_has_won:

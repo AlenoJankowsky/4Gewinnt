@@ -37,7 +37,7 @@ class StatusValidator:
                 old_cell_index_in_row = cell_index_in_row
                 if sequence_counter == 4:
                     return True
-                
+
                 player_symbol_is_in_current_cell = player_symbol in row[cell_index_in_row]
                 if player_symbol_is_in_current_cell:
                     sequence_counter += 1
@@ -68,7 +68,7 @@ class StatusValidator:
         for cell in board.board[0]:
             if '_' in cell:
                 return False
-                
+
         return True
 
     @staticmethod
