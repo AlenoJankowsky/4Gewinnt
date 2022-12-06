@@ -27,6 +27,6 @@ def main() -> None:
                     raise ValueError
             except ValueError:
                 print("Please enter Y or N. ", end="")
-        
+
 if __name__ == "__main__":
     main()
