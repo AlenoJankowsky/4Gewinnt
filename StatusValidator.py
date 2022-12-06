@@ -1,7 +1,4 @@
 class StatusValidator:
-    def __init__(self):
-        pass
-
     def is_win(self, board, player_symbol) -> bool:
         return self.is_horizontal_win(board, player_symbol) or self.is_vertical_win(board, player_symbol) or self.is_diagonal_win(board, player_symbol)
 
